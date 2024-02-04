@@ -1,8 +1,8 @@
-require('dotenv').config();
+require('dotenv').config(); //Adding enviroment variabels for the process obj
 
 
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require('express');  //require the express package
+const mongoose = require('mongoose'); //import the data base
 const recipeRoutes = require('./routes/recipes');
 
 // Express app
