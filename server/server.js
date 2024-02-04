@@ -1,25 +1,30 @@
-require('dotenv').config()
+require('dotenv').config();
 
 
 const express = require('express');
+const mongoose = require('mongoose');
 const recipeRoutes = require('./routes/recipes');
 
-//express app
+// Express app
 const app = express();
 
-//middleware & static files
-app.use(express.json())
+// Middleware & static files
+app.use(express.json());
 app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
-})
+    console.log(req.path, req.method);
+    next();
+});
 
-//register view engine
-app.use('/api/recipes', recipeRoutes)
+// Register view engine
+app.use('/api/recipes', recipeRoutes);
 
-
-//listen for requests
-app.listen(process.env.PORT, () => {
-    console.log('listening on port', process.env.PORT)
-})
-
+// Connect to MongoDB & listen for requests
+mongoose.connect(process.env.MONGO_URI)
+    .then(result => {
+        // Listen for requests
+        const PORT = process.env.PORT || 3000; // Ensure PORT is correctly defined
+        app.listen(PORT, () => {
+            console.log(`Connected to DB & listening on port ${PORT}`);
+        });
+    })
+    .catch(err => console.log(err));
