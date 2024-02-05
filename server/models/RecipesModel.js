@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 // Define the enum values for difficulty
 const difficultyEnum = ['beginner', 'intermediate', 'advanced'];
-const ingredientEnum = ['eggs', 'flour', 'sugar', 'milk', 'butter'];
+const ingredientEnum = ['eggs', 'flour', 'sugar', 'milk', 'butter', 'pasta', 'cream', 'garlic'];
 
 const recipeSchema = new Schema({
     title: {
