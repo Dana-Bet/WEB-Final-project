@@ -2,7 +2,9 @@ const express = require('express')
 const {
     getRecipe,
     getRecipes,
-    createRecipe
+    createRecipe,
+    deleteRecipe,
+    updateRecipe,
 } =require('../controllers/recipeController')
 
 const router = express.Router()
@@ -17,19 +19,10 @@ router.get('/:id', getRecipe)
 router.post('/',createRecipe)
 
 //Update a recipe 
-router.patch('/:id', (req, res) => {
-    res.json({
-        message: 'UPDATE a recipe'
-    })
-})
+router.patch('/:id',updateRecipe)
 
 //Delete a recipe 
-router.delete('/:id', (req, res) => {
-    res.json({
-        message: 'DELETE a recipe'
-    })
-})
-
+router.delete('/:id', deleteRecipe)
 
 
 module.exports = router
